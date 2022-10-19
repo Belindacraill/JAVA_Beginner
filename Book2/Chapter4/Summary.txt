@@ -1,0 +1,165 @@
+Chapter 4  -  Making Choices
+
+
+IN THIS CHAPTER:
+
+»» Boring into Boolean expressions
+   for fun and profit
+»» Focusing on your basic, run-of-themill
+   if statement
+»» Looking at else clauses and else-if
+   statements
+»» Understanding nested if statements
+»» Considering logical operators
+»» Looking at the weird ?: operator
+»» Knowing the proper way to do string
+   comparisons.
+
+In this chapter,
+you discover two Java statements that let you create some variety in your
+programs. The if statement lets you execute a statement or a block of statements
+only if some conditional test turns out to be true. And the switch statement lets
+you execute one of several blocks of statements depending on the value of an
+integer variable.
+
+* The if statement relies heavily on the use of Boolean expressions, which are, in
+  general, expressions that yield a simple true or false result.
+
+* Using if Statements:
+- The if statement is one of the most important statements in any programming
+  language.
+- Indenting the statement under the if statement is customary because it makes the
+  structure of your code more obvious. It isn’t necessary, but it’s always a good idea.
+
+* if-else statements:
+
+- An if-else statement adds an additional element to a basic if statement
+- In some cases, you can avoid using the else part of an if-else statement by
+  cleverly rearranging your code.
+- You can use blocks for either or both of the statements in an if-else statement
+
+* Nested if statements:
+- The statement that goes in the if or else part of an if-else statement can be any
+  kind of Java statement, including another if or if-else statement. This arrangement
+  is called nesting, and an if or if-else statement that includes another if or
+  if-else statement is called a nested if statement.
+- An if statement that’s contained within another if statement is called an inner
+  if statement, and an if statement that contains another if statement is called
+  an outer if statement.
+- Be careful when you use nested if and else statements, as it is all too easy to end
+  up with statements that don’t work the way you expect them to. The key is knowing
+  how Java pairs else keywords with if statements. The rule is actually very
+  simple: Each else keyword is matched with the most previous if statement that
+  hasn’t already been paired with an else keyword.
+
+* else-if statements:
+- common pattern for nested if statements is to have a series of if-else statements
+  with another if-else statement in each else part.
+- These statements are sometimes called else-if statements, although that term is
+  unofficial. Officially, all that’s going on is that the statement in the else part happens
+  to be another if statement.
+
+* Using the ! operator:
+- The Not operator reverses the value of a boolean expression. Thus, if the expression
+  is true, Not changes it to false. If the expression is false, Not changes it
+  to true.
+- Don’t confuse the Not logical operator (!) with the Not Equals relational operator
+  (!=). Although these operators are sometimes used in similar ways, the Not
+  operator is more general.
+- You must almost always enclose the expression that the ! operator is applied to in
+  parentheses.
+
+* Using the & and && operators:
+- The & and && operators combine two boolean expressions and return true only
+  if both expressions are true.
+- The && operator is similar to the & operator, but it leverages your knowledge of
+  logic a bit more. Because both expressions compared by the & operator must be
+  true for the entire expression to be true, there’s no reason to evaluate the second
+  expression if the first one returns false. The & operator isn’t aware of this fact,
+  so it blindly evaluates both expressions before determining the results. The &&
+  operator is smart enough to stop when it knows what the outcome is.
+- As a result, almost always use && instead of &.
+
+* Using the | and || operators:
+- The | and || operators are called Or operators because they return true if the first
+  expression is true or if the second expression is true. They also return true if
+  both expressions are true. (You find the | symbol on your keyboard just above the
+  Enter key.
+- In most cases, you should use the Conditional Or operator (||) instead of the
+  regular Or operator (|).
+- As with the And operators, you should use the regular Or operator only if your
+  program depends on some side effect of the second expression, such as work done
+  by a method call.
+
+* Using the ^ operator:
+- The ^ operator performs what in the world of logic is known as an Exclusive Or,
+  commonly abbreviated as Xor. It returns true if one — and only one — of the two
+  subexpressions is true. If both expressions are true, or if both expressions are
+  false, the ^ operator returns false.
+
+* Combining logical operators:
+- You can combine simple boolean expressions to create more complicated expressions.
+
+* Using the Conditional Operator:
+- Java has a special operator called the conditional operator that’s designed to eliminate
+  the need for if statements in certain situations. It’s a ternary operator, which
+  means that it works with three operands.
+- One common use for the conditional operator is when you’re using concatenation
+  to build a text string, and you have a word that may need to be plural based on
+  the value of an integer variable.
+
+* Comparing Strings:
+- when you use the == operator with reference types, Java
+  compares the references to the objects, not the objects themselves.
+- The String class has another method, equalsIgnoreCase, that’s also useful for
+  comparing strings. It compares strings but ignores case, which is especially useful
+  when you’re testing string values entered by users.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
