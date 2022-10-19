@@ -1,0 +1,123 @@
+Understanding Object-Oriented Programming
+
+IN THIS CHAPTER:
+»»Looking at what object-oriented
+   programming is
+»»Understanding objects and classes
+»»Investigating inheritance and
+   interfaces
+»»Designing programs with objects
+»»Diagramming with UML
+
+What Is Object-Oriented Programming?
+object-oriented programming is a type of computer programming based  on the premise that all programs are essentially computer-based simulations of
+real-world objects or abstract concepts.
+
+* Understanding Objects:
+- Objects have identity:
+  Every object in an object-oriented program has an identity. In other words, every
+  occurrence of a particular type of object — called an instance — can be distinguished
+  from every other occurrence of the same type of object, as well as from
+  objects of other types.
+
+* Objects have type:
+- object-oriented programming lets you assign
+  names to the different kinds of objects in a program. In Java, types are defined by
+  classes. So when you create an object from a type, you’re saying that the object
+  is of the type specified by the class.
+
+
+* Objects have state:
+- The type of an object determines what attributes the object has. Thus all objects
+  of a particular type have the same attributes. They don’t necessarily have the
+  same values for those attributes.
+- The combination of the values for all the attributes of an object is called the object’s
+  state. Unlike its identity, an object’s state can — and usually does — change over its
+  lifetime.
+
+* Objects have behavior:
+- Another characteristic of objects is that they have behavior, which means that they
+  can do things. Like state, the specific behavior of an object depends on its type. But
+  unlike state, behavior isn’t different for each instance of a type.
+- In Java, the behavior of an object is provided by its methods. Thus the format
+  method of the NumberFormat class is what provides the formatting behavior for
+  NumberFormat objects.
+
+* Understanding the Life Cycle of an Object:
+1. Before an object can be created from a class, the class must be loaded. To do
+  that, the Java runtime locates the class on disk (in a .class file) and reads it
+  into memory. Then Java looks for any static initializers that initialize static
+  fields — fields that don’t belong to any particular instance of the class, but
+  belong to the class itself and are shared by all objects created from the class.
+  A class is loaded the first time you create an object from the class or the first
+  time you access a static field or method of the class. When you run the main
+  method of a class, for example, the class is initialized because the main
+  method is static.
+2. An object is created from a class when you use the new keyword. To initialize the
+  class, Java allocates memory for the object and sets up a reference to the object
+  so that the Java runtime can keep track of it. Then Java calls the class constructor,
+  which is like a method but is called only once: when the object is created. The
+  constructor is responsible for doing any processing required to initialize the
+  object — initializing variables, opening files or databases, and so on.
+3. The object lives its life, providing access to its public methods and fields to
+  whoever wants and needs them.
+4. When it’s time for the object to die, the object is removed from memory, and
+  Java drops its internal reference to it. You don’t have to destroy objects
+  yourself. A special part of the Java runtime called the garbage collector takes
+  care of destroying all objects when they are no longer in use.
+
+* Working with Related Classes:
+- The real power of objectoriented
+  programming, however, lies in its ability to create classes that describe
+  closely related objects.
+- Java has two object-oriented programming features that are designed specifically
+  to handle classes that are related this way: inheritance and interfaces.
+
+* Inheritance:
+- Inheritance is an object-oriented programming technique that lets you use one
+  class as the basis for another. The existing class is called the base class, superclass,
+  or parent class; the new class that’s derived from it is called the derived class, subclass,
+  or child class.
+
+* Interfaces:
+- An interface is a set of methods and fields that a class must provide to implement
+  the interface. The interface itself is simply a set of public method and field declarations
+  that are given a name.
+- Interfaces are closely related to inheritance but have two key differences:
+- The interface itself doesn’t provide code that implements any of its methods.
+  An interface is just a set of method and field signatures. By contrast, a base
+  class can provide the implementation for some or all of its methods.
+- A class can have only one base class, but a class can implement as many
+  interfaces as necessary.
+
+* Designing a Program with Objects:
+- The most important part of developing
+  an object-oriented program is designing the classes that are used to create
+  the program’s objects.
+- One common way to design object-oriented applications is to divide the application
+  into several distinct layers or tiers that provide distinct types of functions.
+
+»»Presentation: The objects in this layer handle all the direct interaction with
+  users. The HTML pages in a web application go in this layer, as do the Swing
+  page and frame classes in a GUI-based application. (I cover Swing in Book 6.)
+»»Logic: The objects in this layer represent the core objects of the application.
+  For a typical business-type application, this layer includes objects that
+  represent business entities such as customer, products, orders, suppliers,
+  and the like. This layer is sometimes called the business rules layer because
+  the objects in this layer are responsible for carrying out the rules that govern
+  the application.
+»»Database: The objects in this layer handle all the details of interacting with
+  whatever form of data storage is used by the application. If the data is stored
+  in a SQL database, for example, the objects in this layer handle all the SQL.
+
+
+
+
+
+
+
+
+
+
+
+
