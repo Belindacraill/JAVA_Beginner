@@ -1,0 +1,233 @@
+*Making Your Own Classes*
+
+IN THIS CHAPTER:
+»»Creating your own class
+»»Looking at the pieces of a class
+   declaration
+»»Finding out about class fields
+»»Constructing constructors
+»»Adding methods to your classes
+»»Using the this keyword.
+
+* Declaring a Class:
+- All classes must be defined by a class declaration — lines of code that provide the
+  name for the class and the body of the class.
+- the main reason you write class declarations is so other classes can create objects
+  from the class you’re defining.
+
+* Picking class names:
+- The ClassName is an identifier that provides a name for your class. You can use
+  any identifier you want to name a class, but the following three guidelines can
+  simplify your life:
+»»Begin the class name with a capital letter. If the class name consists of more
+   than one word, capitalize each word: for example, Ball, RetailCustomer, and
+   GuessingGame.
+»»Whenever possible, use nouns for your class names. Classes create
+   objects, and nouns are the words you use to identify objects. Thus most class
+   names should be nouns.
+»»Avoid using the name of a Java API class. No rule says that you absolutely
+   have to, but if you create a class that has the same name as a Java API class,
+   you have to use fully qualified names (such as java.util.Scanner) to tell
+   your class apart from the API class with the same name.
+
+* Knowing what goes in the class body:
+- The class body of a class is everything that goes within the braces at the end of the
+  class declaration. The public class ClassName part of a class declaration takes
+  just one line, but the body of the class declaration may take hundreds of lines.
+- The class body can contain the following elements:
+»»Fields: Variable declarations define the public or private fields of a class.
+»»Methods: Method declarations define the methods of a class.
+»»Constructors: A constructor is a block of code that’s similar to a method but
+   is run to initialize an object when an instance is created. A constructor must
+   have the same name as the class itself, and although it resembles a method,
+   it doesn’t have a return type.
+»»Initializers: These stand-alone blocks of code are run only once, when the
+   class is initialized. There are actually two types, called static initializers and
+   instance initializers. Although you won’t use them often, I talk about instance
+   initializers later in this chapter, in the section “Using Initializers.” (For information
+   about static initializers, refer to Book 3, Chapter 3.)
+»»Other classes and interfaces: A class can include another class, which is then
+   called an inner class or a nested class. Classes can also contain interfaces.
+- Unlike some programming languages, Java doesn’t care about the order in which
+  items appear in the class body.
+- The fields, methods, classes, and interfaces contained within a class are called the
+  members of the class. Constructors and initializers aren’t considered to be members.
+
+* Seeing where classes go:
+- A public class must be written in a source file that has the same name as the class,
+  with the extension java. A public class named Greeter, for example, must be
+  placed in a file named Greeter.java.
+- An inner class is a class that’s defined within the body of another class and is available
+  only from within that class.
+- When you code more than one class in a single source file, Java still creates a separate
+  class file for each class.
+- If you’re going to create an application that has several public classes, create a
+  separate folder for the application. Then save all the class files for the application
+  to this folder. If you keep your class files together in the same folder, the Java
+  compiler can find them. If you place them in separate folders, you may need to
+  adjust your ClassPath environment variable to help the compiler find the classes. 
+
+* Working with Members:
+- The members of a class are the fields and methods defined in the class body.
+
+* Understanding fields:
+- A field is a variable that’s defined in the body of a class, outside any of the class’s
+  methods. Fields, which are also called class variables, are available to all the methods
+  of a class. In addition, if the field specifies the public keyword, the field is
+  visible outside the class. If you don’t want the field to be visible outside the class,
+  use the private keyword instead.
+- A field is defined the same as any other Java variable, but it can have a modifier
+  that specifies whether the field is public or private.
+
+* Understanding methods:
+- To declare a method that’s available to users of your class, add
+  the public keyword to the method declaration.
+- To create a private method that can be used within the class but isn’t visible outside
+  the class, use the private keyword.
+
+* Understanding visibility:
+- The combination of all the members that have public access is sometimes called
+  the public interface of your class. These members are the only means that other
+  objects have to communicate with objects created from your class. As a result,
+  carefully consider which public fields and methods your class declares.
+- The term expose is sometimes used to refer to the creation of public fields and
+  methods. If a class has a public method named isActive, for example, you could
+  say that the class exposes the isActive method. That simply means the method
+  is available to other classes.
+- You can use private fields and methods within a class — but not from other
+  classes. Private fields and methods provide implementation details that may be
+  crucial to the operation of your class but that shouldn’t be exposed to the outside
+  world. Private fields and methods are sometimes called internal members because
+  they’re available only from within the class.
+
+* Using Getters and Setters:
+- One of the basic goals of object-oriented programming is to hide the implementation
+  details of a class inside the class while carefully controlling what aspects
+  of the class are exposed to the outside world. As a general rule, you should avoid
+  creating public fields. Instead, you can make all your fields private. Then you can
+  selectively grant access to the data those fields contain by adding to the class special
+  methods called accessors.
+- There are two types of accessors. A get accessor (also called a getter) is a method
+  that retrieves a field value, whereas a set accessor (setter) is a method that sets a
+  field value.
+
+Creating classes with accessors rather than simple public fields offers several
+benefits:
+»»You can create a read-only property by providing a get accessor but not a set
+   accessor. Then other classes can retrieve the property value — but can’t
+   change it.
+»»Instead of storing the property value in a private field, you can calculate it
+   each time the get accessor method is called.
+»»You can protect the class from bad data by validating data in a property set
+   accessor and either ignoring invalid data or throwing an exception if invalid
+   data is passed to the method.
+
+* THE ACCESSOR PATTERN:
+- The Accessor pattern is designed to provide a consistent way to set or retrieve the value
+  of class fields without having to expose the fields themselves to the outside world.
+- If all your accessors do is set and return the values, without doing any data validation
+  or other processing, you may as well skip them. The point of making your fields private
+  is to carefully control access to them. If you’re going to use accessors for all your fields,
+  you might as well make the fields public.
+
+* Overloading Methods:
+- A Java class can contain two or more methods with the same name, provided that
+  those methods accept different parameters. This technique, called overloading, is
+  one of the keys to building flexibility into your classes. With overloading, you can
+  anticipate different ways that someone might want to invoke an object’s functions
+  and then provide overloaded methods for each alternative.
+- The basic rule in creating overloaded methods is that every method must have
+  a unique signature. A method’s signature is the combination of its name and the
+  number and types of parameters it accepts.
+
+Two things that are not a part of a method’s signature are:
+»»The method’s return type: You can’t code two methods with the same name
+   and parameters but with different return types.
+»»The names of the parameters: All that matters to the method signature are
+   the types of the parameters and the order in which they appear.
+
+* Creating Constructors:
+- A constructor is a block of code that’s called when an instance of an object is
+  created.
+- In many ways, a constructor is similar to a method, but a few differences
+  exist:
+»»A constructor doesn’t have a return type.
+»»The name of the constructor must be the same as the name of the class.
+»»Unlike methods, constructors are not considered to be members of a class.
+   (That’s important only when it comes to inheritance.
+»»A constructor is called when a new instance of an object is created. In fact, it’s
+   the new keyword that calls the constructor. After creating the object, you can’t
+   call the constructor again.
+- Notice also that a constructor can throw exceptions if it encounters situations that
+  it can’t recover from.
+
+* Creating basic constructors:
+- Probably the most common reason for coding a constructor is to provide initial
+  values for class fields when you create the object.
+- Like methods, constructors can be overloaded. In other words, you can provide
+  more than one constructor for a class, provided that each constructor has a unique
+  signature.
+
+* Creating default constructors:
+- Every class has a right to a constructor. If you
+  don’t provide a constructor, Java appoints one for you, free of charge. This free
+  constructor is called the default constructor. It doesn’t accept any parameters and
+  doesn’t do anything, but it does allow your class to be instantiated.
+- The default constructor is not created if you declare any constructors for the class.
+  As a result, if you declare a constructor that accepts parameters and still want to
+  have an empty constructor (with no parameters and no body), you must explicitly
+  declare an empty constructor for the class.
+
+* Calling other constructors:
+- A constructor can call another constructor of the same class by using the special
+  keyword this as a method call. This technique is commonly used when you have
+  several constructors that build on one another.
+- You have a few restrictions in using the this keyword as a constructor call:
+»»You can call another constructor only in the very first statement of a constructor.
+»»Each constructor can call only one other constructor, but you can chain
+   constructors. If a class has three constructors, the first constructor can call the
+   second one, which in turn calls the third one.
+»»You can’t create loops in which constructors call one another.
+- If you don’t explicitly call a constructor in the first line of a constructor, Java
+  inserts code that automatically calls the default constructor of the base class —
+  that is, the class that this class inherits.
+
+* Finding More Uses for the this Keyword:
+- you can use the this keyword in a constructor
+  to call another constructor for the current class. You can also use this
+  in the body of a class constructor or method to refer to the current object — that
+  is, the class instance for which the constructor or method has been called.
+- The this keyword is usually used to qualify references to instance variables of the
+  current object.
+- You can also use this in a method body.
+- Sometimes you use the this keyword all by itself to pass a reference to the current
+  object as a method parameter.
+- The println method calls the object’s toString method to get a string representation
+  of the object and then prints it to the console. By default, toString prints
+  the name of the class that the object was created from and the object’s hash code. 
+
+* Using Initializers:
+- An initializer (sometimes called an initializer block) is a lonely block of code that’s
+  placed outside any method, constructor, or other block of code. Initializers are
+  executed whenever an instance of a class is created, regardless of which constructor
+  is used to create the instance.
+- Initializer blocks are similar to variable initializers used to initialize variables. The
+  difference is that with an initializer block, you can code more than one statement.
+
+Here are a few other tidbits of information concerning initializers:
+»»If a class contains more than one initializer, the initializers are executed in the
+   order in which they appear in the program.
+»»Initializers are executed before any class constructors.
+»»A special kind of initializer block called a static initializer lets you initialize static
+   fields. (For more information, see the next chapter.)
+»»Initializers are sometimes used with anonymous classes.
+
+
+
+
+
+
+
+
+
+
