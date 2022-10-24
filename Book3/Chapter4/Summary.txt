@@ -1,0 +1,215 @@
+IN THIS CHAPTER:
+»»Explaining inheritance
+»»Creating subclasses
+»»Using protected access
+»»Creating final classes
+»»Demystifying polymorphism
+»»Creating custom exception classes
+
+* Using Subclasses and Inheritance:
+- a Java class can be based on another
+class. Then the class becomes like a child to the parent class: It inherits
+all the characteristics of the parent class, good and bad. All the fields and
+methods of the parent class are passed on to the child class. The child class can
+use these fields or methods as they are, or it can override them to provide its own
+versions. In addition, the child class can add fields or methods of its own.
+
+* Introducing Inheritance:
+- The word inheritance conjures up several noncomputer meanings:
+»»Children inherit certain characteristics from the parents
+»»Children can also inherit behavior from their parents.
+
+- In Java, inheritance refers to a feature of object-oriented programming that lets
+  you create classes that are derived from other classes. A class that’s based on
+  another class is said to inherit the other class. The class that is inherited is called
+  the parent class, the base class, or the superclass. The class that does the inheriting is
+  called the child class, the derived class, or the subclass.
+- The terms subclass and superclass seem to be the preferred terms among Java gurus.
+- be aware that the term subclass can be used as a verb. When you create a
+  subclass that inherits a base class, for example, you are subclassing the base class.
+
+You need to know a few important things about inheritance:
+»»A derived class automatically takes on all the behavior and attributes of its
+   base class.
+»»A derived class can add features to the base class it inherits by defining its
+   own methods and fields.
+»»A derived class can also change the behavior provided by the base class. A
+   base class may provide that all classes derived from it have a method named
+   play.
+»»Inheritance is best used to implement is-a-type-of relationships.
+
+- All classes ultimately derive from a Java class named Object. Any class that
+  doesn’t specifically state what class it is derived from is assumed to derive from
+  the Object class. This class provides some of the basic features that are common
+  to all Java classes, such as the toString method.
+
+
+* Creating Subclasses:
+- The basic procedure for creating a subclass is simple: You just use the extends
+  keyword on the declaration for the subclass.
+- The subclass automatically has all the methods and fields of the class it extends.
+
+* THE DELEGATION PATTERN:
+- simply including an instance of
+  one class in another class is easier than using inheritance. This technique is sometimes
+  called the Delegation pattern.
+- Why is this technique called the delegation? Rather than write code that implements
+  the functions of the collection, you delegate that task to an ArrayList object, because
+  ArrayList objects already know how to perform these functions.
+
+You need to know some important details to use inheritance properly:
+»»A subclass inherits all the members from its base class. Constructors are not
+   considered to be members, however. As a result, a subclass does not inherit
+   constructors from its base class.
+»»The visibility (public or private) of any members inherited from the base
+   class is the same in the subclass.
+»»You can override a method by declaring a new member with the same
+   signature in the subclass.
+»»A special type of visibility called protected hides fields and methods from
+   other classes but makes them available to subclasses.
+»»You can add more methods or fields, private or protected, to a subclass.
+
+* Overriding Methods:
+- If a subclass declares a method that has the same signature as a public method of
+  the base class, the subclass version of the method overrides the base class version
+  of the method. This technique lets you modify the behavior of a base class to suit
+  the needs of the subclass.
+
+Note that to override a method, three conditions have to be met:
+»»The class must extend the class that defines the method you want to override.
+»»The method must be declared in the base class with public access. You can’t
+   override a private method.
+»»The method in the subclass must have the same signature as the method in
+   the base class. In other words, the name of the method and the parameter
+   types must be the same.
+
+* Protecting Your Members:
+- When you inherit a class, all the public members of the superclass are available to the subclass,
+  but the private members aren’t. They do become part of the derived class,
+  but you can’t access them directly in the derived class.
+- Java provides a third visibility option that’s useful when you create subclasses:
+  protected. A member with protected visibility is available to subclasses but not
+  to other classes.
+
+* Using this and super in Your Subclasses:
+- You already know about the this keyword: It provides a way to refer to the current
+  object instance. It’s often used to distinguish between a local variable or a
+  parameter and a class field with the same name.
+- You can also use the super keyword in the constructor of a subclass to explicitly
+  call a constructor of the superclass.
+
+* Understanding Inheritance and Constructors:
+- When you create an instance of a subclass, Java automatically calls the default
+  constructor of the base class before it executes the subclass constructor.
+- If you want, you can explicitly call a base class constructor from a subclass by
+  using the super keyword. Because Java automatically calls the default constructor
+  for you, the only reason to do this is to call a constructor of the base class that
+  uses a parameter.
+
+You need to obey a few rules and regulations when working with superclass constructors:
+»»If you use super to call the superclass constructor, you must do so in the very
+   first statement in the constructor.
+»»If you don’t explicitly call super, the compiler inserts a call to the default
+   constructor of the base class. In that case, the base class must have a default
+   constructor. If the base class doesn’t have a default constructor, the compiler
+   refuses to compile the program.
+»»If the superclass is itself a subclass, the constructor for its superclass is called
+  in the same way. This continues all the way up the inheritance hierarchy until
+  you get to the Object class, which has no superclass.
+
+* Using final:
+- Java has a final keyword that serves three purposes. When you use final with a
+  variable, it creates a constant whose value can’t be changed after it has been initialized.
+- The other two uses of the final keyword are to create final methods and final classes
+
+* Final methods:
+- A final method is a method that can’t be overridden by a subclass. To create a final
+  method, you simply add the keyword final to the method declaration.
+
+Here are some additional details about final methods:
+»»You might think that a subclass wouldn’t need to override a method, but
+   there’s no reason to be sure of that. Predicting how other people might use
+   your class is difficult. As a result, usually you should avoid using final methods
+   unless you have a compelling reason to do so.
+»»Final methods execute more efficiently than nonfinal methods because the
+   compiler knows at compile time that a call to a final method won’t be overridden
+   by some other method. The performance gain isn’t huge, but for applications
+   in which performance is crucial, it can be noticeable.
+»»Private methods are automatically considered to be final because you can’t
+   override a method you can’t see.
+
+* Final classes:
+- A final class is a class that can’t be used as a base class. To declare a class as final,
+  just add the final keyword to the class declaration.
+- When you declare a class to be final, all of its methods are considered to be final
+  as well. That makes sense when you think about it. Because you can’t use a final
+  class as the base class for another class, no class can possibly be in a position to
+  override any of the methods in the final class. Thus all the methods of a final class
+  are final methods.
+
+* Casting Up and Down:
+- An object of a derived type can be treated as though it were an object of its base
+  type.
+- This arrangement is called upcasting, and Java does it automatically.
+- As a general rule, you should declare method parameters with types as far up in
+  the class hierarchy as possible.
+
+* Determining an Object’s Type:
+- a variable of one type can possibly hold a reference to an object of another type.
+
+* Poly What?:
+- The term polymorphism refers to the ability of Java to use base class variables to
+  refer to subclass objects; to keep track of which subclass an object belongs to; and
+  to use overridden methods of the subclass, even though the subclass isn’t known
+  when the program is compiled.
+
+* Creating Custom Exceptions:
+Tracing the Throwable hierarchy:
+- you use the try/catch statement to catch exceptions and the throw
+  statement to throw exceptions. Each type of exception that can be caught or
+  thrown is represented by a different exception class.
+
+The following paragraphs describe the classes in this hierarchy:
+»»Throwable: The root of the exception hierarchy is the Throwable class. This
+   class represents any object that can be thrown with a throw statement and
+   caught with a catch clause.
+»»Error: This subclass of Throwable represents serious error conditions that
+   reasonable programs can’t recover from. The subclasses of this class represent
+   the specific types of errors that can occur. If the Java Virtual Machine runs
+   out of memory, for example, a VirtualMachineError is thrown. You don’t
+   have to worry about catching these errors in your programs.
+»»Exception: This subclass of Throwable represents an error condition that
+   most programs should try to recover from. Thus, Exception is effectively the
+   top of the hierarchy for the types of exceptions you catch with try/catch
+   statements.
+»»RuntimeException: This subclass of Exception represents unchecked
+   exceptions. You don’t have to catch or throw unchecked exceptions, but you
+   can if you want to.
+
+- If your application needs to throw a custom exception, you can create an exception
+  class that inherits any of the classes in this hierarchy. Usually, however, you start
+  with the Exception class to create a custom checked exception.
+
+* Creating an exception class:
+- To create a custom exception class, you just define a class that extends one of the
+  classes in the Java exception hierarchy. Usually you extend Exception to create a
+  custom checked exception.
+- Unfortunately, constructors aren’t considered to be class members, so they aren’t
+  inherited when you extend a class.
+- The Exception class itself and most other exception
+  classes have a constructor that lets you pass a string message that’s stored with
+  the exception and can be retrieved via the getMessage method.
+- Although it’s possible to do so, adding fields or methods to a custom exception
+  class is unusual.
+
+* Throwing a custom exception:
+- As for any exception, you use a throw statement to throw a custom exception. You
+  usually code this throw statement in the midst of a catch clause that catches some
+  other, more generic exception.
+
+
+
+
+
+
+
