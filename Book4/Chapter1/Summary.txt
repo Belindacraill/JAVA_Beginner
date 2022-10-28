@@ -1,0 +1,134 @@
+IN THIS CHAPTER
+»Quickly reviewing what you already know about strings
+»Examining string class methods
+»Working with substrings
+»Splitting strings
+»Using the StringBuilder and StringBuffer classes
+»Using the CharSequence interface
+
+* Working with Strings:
+- strings are among the most common types of objects in Java.
+* Reviewing Strings:
+»
+Strings are reference types, not value types, such as or boolean int.
+»
+Even though strings aren’t primitive types, the Java compiler has some
+features designed to let you work with strings almost as though they were
+primitive types.
+»
+Strings can include escape sequences that consist of a slash followed by
+another character.
+»
+Strings and characters are different. String literals are marked by quotation
+marks; character literals are marked by apostrophes.
+
+* THE IMMUTABLE PATTERN:
+An immutable object is an object that, once created, can never be changed. The String
+class is the most common example of an immutable object. After you create a
+String object, you can’t change it.
+
+Follow these three simple rules for creating an immutable object:
+• Provide one or more constructors that accept parameters to set the initial state of
+  the object.
+• Don’t allow any methods to modify any instance variables in the object. Set instance
+  variables with constructors and then leave them alone.
+• Any method that modifies the object should do so by creating a new object with the
+  modified values. Then this method returns the new object as its return value.
+
+-You can combine, or concatenate, strings by using the operator, like this:
+String line2 = line1 + “\nOh what a beautiful day!”
+
+-You can also use the operator with strings, like this:
+line2 += “\nI’ve got a beautiful feeling”;
+
+-When a primitive type is used in a concatenation expression, Java automatically
+converts the primitive type to a string. Thus Java allows the following:
+int empCount = 50;
+String msg = "Number of employees: " + empCount;
+
+* Using the String Class:
+- The String class is the class you use to create string objects.
+- The most important thing to remember about the String class is that in spite
+  of the fact that it has a bazillion methods, none of those methods let you alter
+  the string in any way.
+- Although you can’t change a string after you create it, you can use methods of the String
+  class to create new strings that are variations of the original string.
+
+* Finding the length of a string:
+- Getting the length of a string usually isn’t very useful by itself, but the length
+  method often plays an important role in other string manipulations.
+
+* Making simple string modification:
+- Bear in mind that because strings are immutable, these methods don’t actually change the
+  String object. Instead, they create a new String with the modifie value.
+
+* Extracting characters from a string:
+- You can use the charAt method to extract a character from a specific position in a
+  string.
+
+* Extracting substrings from a string:
+- The substring method lets you extract a portion of a string.
+
+* Splitting a string:
+- The split command is especially useful for splitting a string into separate strings
+  based on a delimiter character.
+- With the split method, you can easily separate this string into four strings. In the
+  process, the colons are discarded.
+- Unfortunately, the use of the split method requires that you use an array.
+- The split method carves a string into an array of strings separated by the delimiter
+  character passed via a string parameter.
+- The string passed to the split method is actually a special type of string used for
+  pattern recognition, called a regular expression.
+
+* Replacing parts of a string:
+- You can use the replaceFirst or replaceAll method to replace a part of a string
+  that matches a pattern you supply with some other text.
+- Once again, don’t forget that strings are immutable. As a result, the replace
+  methods don’t actually modify the String object itself.
+
+* Using the StringBuilder and StringBuffer Classes:
+- Because String objects are immutable, any method of the String class that modifies the string in any way must create a new
+  String object and copy the modified contents of the original string object to the
+  new string.
+- The StringBuilder and StringBuffer classes are mirror images. Both have the
+  same methods and perform the same string manipulations.
+
+* Creating a StringBuilder object:
+- You can’t assign string literals directly to a StringBuilder object, as you can
+  with a String object.
+- The StringBuilder class, however, has a constructor that accepts a String as a parameter.
+- Internally, a StringBuilder object maintains a fixed area of memory where it stores a string value.
+
+* Using StringBuilder methods:
+- Note that the StringBuffer class uses the same methods. If you have to use StringBuffer
+  instead of StringBuilder, just change the class name and use the same methods.
+
+* Using the CharSequence Interface:
+- The Java API includes a useful interface called CharSequence. All three of
+  the classes discussed in this chapter — String, StringBuilder, and String Buffer
+— implement this interface. This method exists primarily to let you use
+  String, StringBuilder, and StringBuffer interchangeably.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
