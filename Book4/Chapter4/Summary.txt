@@ -1,0 +1,120 @@
+IN THIS CHAPTER:
+»»Introducing linked lists
+»»Comparing linked lists with array lists
+»»Creating linked lists
+»»Adding items to a linked list
+»»Retrieving items from a linked list
+»»Updating and .deleting items in a
+   linked list
+
+* Using the LinkedList Class:
+- The ArrayList class, is a collection
+  class that’s based on an array. Arrays have their strengths and their weaknesses.
+  The strength of an array is that it’s very efficient — at least until
+  you fill it up or try to reorganize it by inserting or deleting elements. Then it suddenly
+  becomes very inefficient.
+- Also, be aware that lambda expressions, introduced with Java 8, provide an alternative
+  method for working with collections, including the LinkedList class.
+
+* Understanding the LinkedList Class:
+- A linked list is a collection in which every object in the list maintains with it a
+  pointer to the following object in the list and another pointer to the preceding
+  object in the list. No array is involved at all in a linked list. Instead, the list is managed
+  entirely by these pointers.
+
+This arrangement has some compelling advantages over arrays:
+»»Because the ArrayList class uses an array to store list data, the ArrayList
+   class frequently has to reallocate its array when you add items to the list.
+»»Like the ArrayList class, the LinkedList class lets you insert items into the
+   middle of the list.
+»»With an array list, removing items from the list is pretty inefficient. The
+   ArrayList class has to copy every item after the deleted item one slot closer
+   to the front of the array to fill the gap left by the deleted item.
+»»Linked lists are especially well suited for creating two common types of lists:
+• Stacks: A stack is a list in which items can be added to and retrieved from
+  only the front of the list.
+• Queues: A queue is a list in which items are always added to the back of the
+  list and always retrieved from the front.
+»»The ArrayList class actually uses an array internally to store the data you add
+   to the array list. The ArrayList class takes care of managing the size of this
+   array.
+
+* Creating a LinkedList:
+- As with any other kind of object, creating a linked list is a two-step affair. First,
+  you declare a LinkedList variable; then you call one of the LinkedList constructors
+  to create the object.
+
+* Adding Items to a LinkedList:
+- The LinkedList class gives you many ways to add items to the list. The most basic
+is the add method.
+Here are some other thoughts to consider when you ponder how to add elements
+to linked lists:
+»»If you specified a type for the list when you created it, the items you add must
+   be of the correct type. The compiler kvetches if they aren’t.
+»»Like arrays and everything else in Java, linked lists are indexed starting with zero.
+»»If you specify an index that doesn’t exist, the add method throws
+   IndexOutOfBoundsException. This is an unchecked exception, so you don’t
+   have to handle it.
+»»LinkedList also has weird methods named offer, offerFirst, and
+   offerLast. The offer method adds an item to the end of the list and has a
+   return type of boolean, but it always returns true.
+
+* Retrieving Items from a LinkedList:
+- As with the ArrayList class, you can use the get method to retrieve an item based
+  on its index. If you pass it an invalid index number, the get method throws the
+  unchecked IndexOutOfBoundsException.
+- You can also use an enhanced for loop to retrieve all the items in the linked list.
+
+Nine methods retrieve the first item in the list:
+
+»»getFirst: Retrieves the first item from the list. This method doesn’t delete
+the item. If the list is empty, NoSuchElement-Exception is thrown.
+»»element: Identical to the getFirst method. This strangely named method
+exists because it’s defined by the Queue interface, and the LinkedList class
+implements Queue.
+»»peek: Similar to getFirst but doesn’t throw an exception if the list is empty.
+Instead, it just returns null. (The Queue interface also defines this method.)
+»»peekFirst: Identical to peek. Only the name of the method is changed to
+protect the innocent.
+»»remove: Similar to getFirst but also removes the item from the list. If the list
+is empty, it throws NoSuchElementException.
+»»removeFirst: Identical to remove. If the list is empty, it throws
+NoSuchElementException.
+»»poll: Similar to removeFirst but returns null if the list is empty. (This
+method is yet another method that the Queue interface defines.)
+»»pollFirst: Identical to poll (well, identical except for the name of the method).
+»»pop: Identical to removeFirst (but with a catchier name).
+Four methods also retrieve the last item in the list:
+»»getLast: Retrieves the last item from the list. This method doesn’t delete the
+item. If the list is empty, NoSuchElement-Exception is thrown.
+»»peekLast: Similar to getLast but doesn’t throw an exception if the list is
+empty. Instead, it just returns null.
+»»removeLast: Similar to getLast but also removes the item. If the list is empty,
+it throws NoSuchElementException.
+»»pollLast: Similar to removeLast but returns null if the list is empty.
+
+* Updating LinkedList Items:
+- As with the ArrayList class, you can use the set method to replace an object in
+  a linked list with another object.
+- As with an ArrayList, any changes you make to an object retrieved from a linked
+  list are automatically reflected in the list.
+
+* Removing LinkedList Items:
+- You can also remove any arbitrary item by specifying either its index number or
+  a reference to the object you want to remove on the remove method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
